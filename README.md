@@ -1,6 +1,6 @@
 # TensorFlow-Lite-Delphi
 
-The `tslite.dll` is already contained in the debug folder for each project.
+The `tslite.dll` and model files are located in the debug folder for each project.
 
 <a href="https://github.com/tensorflow/examples/tree/master/lite/examples/digit_classifier/android">Digit Classifier</a>
 
