@@ -16,8 +16,7 @@ type
     Button2: TButton;
     ListView1: TListView;
     Label1: TLabel;
-    Edit1: TEdit;
-    Label2: TLabel;
+    rdModel: TRadioGroup;
     procedure Image2MouseMove(Sender: TObject; Shift: TShiftState;
       X, Y: Integer);
     procedure Image2MouseDown(Sender: TObject; Button: TMouseButton;
@@ -29,6 +28,7 @@ type
     procedure ListView1Compare(Sender: TObject; Item1, Item2: TListItem;
       Data: Integer; var Compare: Integer);
     procedure FormShow(Sender: TObject);
+    procedure rdModelClick(Sender: TObject);
   private
     procedure Recognize;
     { Private declarations }
@@ -158,7 +158,14 @@ begin
   end;
 
   try
-    fModel := TfLiteModelCreateFromFile(PAnsiChar(AnsiString(Edit1.Text)));
+    var fModelFile := 'mnist3.tflite';
+    case rdModel.ItemIndex of
+      0: fModelFile := 'mnist.tflite';
+      1: fModelFile := 'mnist1.tflite';
+      2: fModelFile := 'mnist2.tflite';
+      3: fModelFile := 'mnist3.tflite';
+    end;
+    fModel := TfLiteModelCreateFromFile(PAnsiChar(AnsiString(fModelFile)));
 
     if fModel = nil then
     begin
@@ -299,6 +306,11 @@ procedure TForm1.ListView1Compare(Sender: TObject; Item1, Item2: TListItem;
   Data: Integer; var Compare: Integer);
 begin
   Compare := CompareText(Item2.Caption, Item1.Caption);
+end;
+
+procedure TForm1.rdModelClick(Sender: TObject);
+begin
+  Recognize;
 end;
 
 var

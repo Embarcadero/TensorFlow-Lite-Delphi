@@ -97,13 +97,6 @@ object Form1: TForm1
     Height = 13
     Caption = 'Draw a digit in the square below'
   end
-  object Label2: TLabel
-    Left = 418
-    Top = 19
-    Width = 28
-    Height = 13
-    Caption = 'Model'
-  end
   object Button1: TButton
     Left = 55
     Top = 339
@@ -124,9 +117,9 @@ object Form1: TForm1
   end
   object ListView1: TListView
     Left = 341
-    Top = 43
+    Top = 144
     Width = 248
-    Height = 280
+    Height = 179
     Columns = <
       item
         Caption = 'Confidence'
@@ -145,12 +138,19 @@ object Form1: TForm1
     ViewStyle = vsReport
     OnCompare = ListView1Compare
   end
-  object Edit1: TEdit
-    Left = 468
-    Top = 16
-    Width = 121
-    Height = 21
+  object rdModel: TRadioGroup
+    Left = 341
+    Top = 19
+    Width = 248
+    Height = 110
+    Caption = 'Model'
+    ItemIndex = 3
+    Items.Strings = (
+      '0 = 399 kb'
+      '1 = 2,618 kb'
+      '2 = 1,650 kb'
+      '3 = 12,794 kb')
     TabOrder = 3
-    Text = 'mnist2.tflite'
+    OnClick = rdModelClick
   end
 end
