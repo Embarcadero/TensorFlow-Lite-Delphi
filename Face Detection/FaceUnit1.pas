@@ -108,11 +108,11 @@ begin
     var fPicture := TPicture.Create;
     try
       fPicture.LoadFromFile(OpenPictureDialog1.FileName);
-      Image2.Picture.Bitmap.Canvas.ClipRect.Width := fPicture.Width;
-      Image2.Picture.Bitmap.Canvas.ClipRect.Height := fPicture.Height;
+
+      // The detection is hardcoded to 300x300 image
 
       Image2.Picture.Bitmap.Canvas.StretchDraw
-        (fPicture.Bitmap.Canvas.ClipRect, fPicture.Graphic);
+        (Image2.Picture.Bitmap.Canvas.ClipRect, fPicture.Graphic);
     finally
       fPicture.Free;
     end;
