@@ -1,4 +1,7 @@
 # TensorFlow-Lite-Delphi
+
+The `tslite.dll` is already contained in the debug folder for each project.
+
 <a href="https://github.com/tensorflow/examples/tree/master/lite/examples/digit_classifier/android">Digit Classifier</a>
 
 <div align="left">
@@ -34,4 +37,4 @@
 
 # Requirements
 
-Delphi Win64 - 10 Seattle, 10.1 Berlin, 10.2 Tokyo, 10.3 Rio, 10.4 Sydney 
+Delphi Win64 - 11 Alexandira (or 10.0 Seattle, 10.1 Berlin, 10.2 Tokyo, 10.3 Rio, 10.4 Sydney)
