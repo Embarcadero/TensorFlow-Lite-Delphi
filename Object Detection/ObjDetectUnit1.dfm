@@ -8463,9 +8463,9 @@ object Form1: TForm1
   object Label2: TLabel
     Left = 33
     Top = 35
-    Width = 39
+    Width = 28
     Height = 13
-    Caption = #1052#1086#1076#1077#1083#1100
+    Caption = 'Model'
   end
   object Button2: TButton
     Left = 258
@@ -8489,7 +8489,7 @@ object Form1: TForm1
     Top = 393
     Width = 154
     Height = 25
-    Caption = #1054#1090#1082#1088#1099#1090#1100' BMP '#1092#1072#1081#1083'...'
+    Caption = 'Open BMP File'
     TabOrder = 2
     OnClick = Button1Click
   end

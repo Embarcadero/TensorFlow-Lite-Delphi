@@ -30,6 +30,7 @@ type
       Data: Integer; var Compare: Integer);
     procedure FormShow(Sender: TObject);
   private
+    procedure Recognize;
     { Private declarations }
   public
     { Public declarations }
@@ -116,9 +117,15 @@ begin
   Image2.Canvas.Brush.Color := clBlack;
   Image2.Canvas.FillRect(Image2.Canvas.ClipRect);
   Image2.Canvas.Pen.Color := clWhite;
+  ListView1.Clear;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
+begin
+  Recognize;
+end;
+
+procedure TForm1.Recognize;
 var
   i, X, Y: DWORD;
 
@@ -300,17 +307,17 @@ var
 procedure TForm1.Image2MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
+  IsDrawing := True;
   case Button of
-    mbLeft:
-      begin
-        IsDrawing := True;
-
-        Image2.Canvas.Pen.Color := clWhite;
-        Image2.Canvas.Pen.Width := 28;
-        Image2.Canvas.MoveTo(X, Y);
-        Image2.Canvas.LineTo(X, Y);
-      end;
+    mbLeft: Image2.Canvas.Pen.Color := clWhite;
+    mbRight:  Image2.Canvas.Pen.Color := clBlack;
+  else
+    IsDrawing := False;
   end;
+  Image2.Canvas.Pen.Width := 28;
+  Image2.Canvas.MoveTo(X, Y);
+  Image2.Canvas.LineTo(X, Y);
+
 end;
 
 procedure TForm1.Image2MouseMove(Sender: TObject; Shift: TShiftState;
@@ -330,7 +337,7 @@ begin
 
   Image1.Canvas.StretchDraw(Image1.Canvas.ClipRect, Image2.Picture.Bitmap);
 
-  Button2.Click;
+  Recognize;
 end;
 
 end.
