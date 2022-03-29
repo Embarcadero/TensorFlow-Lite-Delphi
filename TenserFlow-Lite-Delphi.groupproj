@@ -6,10 +6,10 @@
         <Projects Include="Face Detection\FaceDetection.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Object Detection\ObjectDetection.dproj">
+        <Projects Include="Digit Classifier\DigitClassifier.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="..\TensorFlow-Lite-Delphi\Digit Classifier\DigitClassifier.dproj">
+        <Projects Include="Object Detection\ObjectDetection.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -29,6 +29,15 @@
     <Target Name="FaceDetection:Make">
         <MSBuild Projects="Face Detection\FaceDetection.dproj" Targets="Make"/>
     </Target>
+    <Target Name="DigitClassifier">
+        <MSBuild Projects="Digit Classifier\DigitClassifier.dproj"/>
+    </Target>
+    <Target Name="DigitClassifier:Clean">
+        <MSBuild Projects="Digit Classifier\DigitClassifier.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DigitClassifier:Make">
+        <MSBuild Projects="Digit Classifier\DigitClassifier.dproj" Targets="Make"/>
+    </Target>
     <Target Name="ObjectDetection">
         <MSBuild Projects="Object Detection\ObjectDetection.dproj"/>
     </Target>
@@ -38,23 +47,14 @@
     <Target Name="ObjectDetection:Make">
         <MSBuild Projects="Object Detection\ObjectDetection.dproj" Targets="Make"/>
     </Target>
-    <Target Name="DigitClassifier">
-        <MSBuild Projects="..\TensorFlow-Lite-Delphi\Digit Classifier\DigitClassifier.dproj"/>
-    </Target>
-    <Target Name="DigitClassifier:Clean">
-        <MSBuild Projects="..\TensorFlow-Lite-Delphi\Digit Classifier\DigitClassifier.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="DigitClassifier:Make">
-        <MSBuild Projects="..\TensorFlow-Lite-Delphi\Digit Classifier\DigitClassifier.dproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="FaceDetection;ObjectDetection;DigitClassifier"/>
+        <CallTarget Targets="FaceDetection;DigitClassifier;ObjectDetection"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="FaceDetection:Clean;ObjectDetection:Clean;DigitClassifier:Clean"/>
+        <CallTarget Targets="FaceDetection:Clean;DigitClassifier:Clean;ObjectDetection:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="FaceDetection:Make;ObjectDetection:Make;DigitClassifier:Make"/>
+        <CallTarget Targets="FaceDetection:Make;DigitClassifier:Make;ObjectDetection:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

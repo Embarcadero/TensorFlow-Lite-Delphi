@@ -16,6 +16,7 @@ type
     Label2: TLabel;
     Button1: TButton;
     OpenPictureDialog1: TOpenPictureDialog;
+    Panel1: TPanel;
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -101,19 +102,19 @@ function TfLiteInterpreterInvoke(interpreter: Pointer): TfLiteStatus; stdcall;
   external LibraryName;
 
 procedure TForm1.Button1Click(Sender: TObject);
-var
-  fBitmap: TBitmap;
 begin
   if OpenPictureDialog1.Execute then
   begin
-    fBitmap := TBitmap.Create;
+    var fPicture := TPicture.Create;
     try
-      fBitmap.LoadFromFile(OpenPictureDialog1.FileName);
+      fPicture.LoadFromFile(OpenPictureDialog1.FileName);
+      Image2.Picture.Bitmap.Canvas.ClipRect.Width := fPicture.Width;
+      Image2.Picture.Bitmap.Canvas.ClipRect.Height := fPicture.Height;
 
       Image2.Picture.Bitmap.Canvas.StretchDraw
-        (Image2.Picture.Bitmap.Canvas.ClipRect, fBitmap);
+        (fPicture.Bitmap.Canvas.ClipRect, fPicture.Graphic);
     finally
-      fBitmap.Free;
+      fPicture.Free;
     end;
 
   end;
@@ -329,9 +330,11 @@ begin
   end;
 end;
 
+
+
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  OpenPictureDialog1.InitialDir := GetCurrentDir;
+//  OpenPictureDialog1.InitialDir := GetCurrentDir;
 end;
 
 end.

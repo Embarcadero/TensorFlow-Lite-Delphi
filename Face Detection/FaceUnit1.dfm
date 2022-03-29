@@ -14,10 +14,11 @@ object Form1: TForm1
   OnCreate = FormCreate
   TextHeight = 13
   object Image2: TImage
-    Left = 33
-    Top = 72
-    Width = 300
-    Height = 300
+    Left = 0
+    Top = 41
+    Width = 375
+    Height = 407
+    Align = alClient
     Picture.Data = {
       07544269746D6170E61E0400424DE61E04000000000036000000280000002C01
       00002C0100000100180000000000B01E0400C40E0000C40E0000000000000000
@@ -8459,42 +8460,63 @@ object Form1: TForm1
       47132C54024F7F51C4DCB4F2F7E9F7FDF1F2FAF7F2F5F2F6ECFAFBF1E8F4F4C2
       F7FD48B9DD0C4F911F376D1E3B5D25324C25324B222E42293142282F42293043
       262E3F262F3E2A34413038462E35442F3645}
+    ExplicitLeft = 33
+    ExplicitTop = 72
+    ExplicitWidth = 300
+    ExplicitHeight = 300
   end
-  object Label2: TLabel
-    Left = 33
-    Top = 35
-    Width = 39
-    Height = 13
-    Caption = #1052#1086#1076#1077#1083#1100
-  end
-  object Button2: TButton
-    Left = 258
-    Top = 393
-    Width = 75
-    Height = 25
-    Caption = 'Detect'
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 375
+    Height = 41
+    Align = alTop
+    BevelOuter = bvNone
+    Caption = ' '
     TabOrder = 0
-    OnClick = Button2Click
-  end
-  object Edit1: TEdit
-    Left = 83
-    Top = 32
-    Width = 121
-    Height = 21
-    TabOrder = 1
-    Text = 'face_detect.tflite'
-  end
-  object Button1: TButton
-    Left = 33
-    Top = 393
-    Width = 154
-    Height = 25
-    Caption = #1054#1090#1082#1088#1099#1090#1100' BMP '#1092#1072#1081#1083'...'
-    TabOrder = 2
-    OnClick = Button1Click
+    ExplicitLeft = 8
+    ExplicitTop = -12
+    ExplicitWidth = 331
+    object Label2: TLabel
+      Left = 16
+      Top = 14
+      Width = 28
+      Height = 13
+      Caption = 'Model'
+    end
+    object Edit1: TEdit
+      Left = 61
+      Top = 11
+      Width = 121
+      Height = 21
+      TabOrder = 0
+      Text = 'face_detect.tflite'
+    end
+    object Button1: TButton
+      Left = 188
+      Top = 9
+      Width = 96
+      Height = 25
+      Caption = 'Load image'
+      TabOrder = 1
+      OnClick = Button1Click
+    end
+    object Button2: TButton
+      Left = 290
+      Top = 9
+      Width = 75
+      Height = 25
+      Caption = 'Detect'
+      TabOrder = 2
+      OnClick = Button2Click
+    end
   end
   object OpenPictureDialog1: TOpenPictureDialog
-    Filter = 'Bitmaps (*.bmp)|*.bmp'
+    Filter = 
+      'Bitmaps (*.bmp)|*.bmp|JPEG|*.jpg;*.jpeg|Images|*.bmp;*.jpg;*.jpe' +
+      'g'
+    FilterIndex = 3
+    InitialDir = '..\..\..\Images'
     Left = 275
     Top = 34
   end
