@@ -1,4 +1,4 @@
-﻿unit Unit1;
+﻿unit ObjDetectUnit1;
 
 interface
 

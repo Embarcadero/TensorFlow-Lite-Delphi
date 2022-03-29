@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{619D1BC7-C975-46F8-BE57-B3E3E3EE8279}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Face Detection\FaceDetection.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Object Detection\ObjectDetection.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\TensorFlow-Lite-Delphi\Digit Classifier\DigitClassifier.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FaceDetection">
+        <MSBuild Projects="Face Detection\FaceDetection.dproj"/>
+    </Target>
+    <Target Name="FaceDetection:Clean">
+        <MSBuild Projects="Face Detection\FaceDetection.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FaceDetection:Make">
+        <MSBuild Projects="Face Detection\FaceDetection.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ObjectDetection">
+        <MSBuild Projects="Object Detection\ObjectDetection.dproj"/>
+    </Target>
+    <Target Name="ObjectDetection:Clean">
+        <MSBuild Projects="Object Detection\ObjectDetection.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ObjectDetection:Make">
+        <MSBuild Projects="Object Detection\ObjectDetection.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DigitClassifier">
+        <MSBuild Projects="..\TensorFlow-Lite-Delphi\Digit Classifier\DigitClassifier.dproj"/>
+    </Target>
+    <Target Name="DigitClassifier:Clean">
+        <MSBuild Projects="..\TensorFlow-Lite-Delphi\Digit Classifier\DigitClassifier.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DigitClassifier:Make">
+        <MSBuild Projects="..\TensorFlow-Lite-Delphi\Digit Classifier\DigitClassifier.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FaceDetection;ObjectDetection;DigitClassifier"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FaceDetection:Clean;ObjectDetection:Clean;DigitClassifier:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FaceDetection:Make;ObjectDetection:Make;DigitClassifier:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

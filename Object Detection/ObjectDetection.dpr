@@ -1,8 +1,8 @@
-program Project1;
+program ObjectDetection;
 
 uses
   Vcl.Forms,
-  Unit1 in 'Unit1.pas' {Form1};
+  ObjDetectUnit1 in 'ObjDetectUnit1.pas' {Form1};
 
 {$R *.res}
 
