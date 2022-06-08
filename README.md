@@ -1,3 +1,11 @@
+# Depricated and Archived
+
+This library is **depricated** in favor of the _**new** [Python4Delphi Data Sciences](https://github.com/Embarcadero/P4D-Data-Sciences) libraries._ That is where we are focusing all future development.
+
+---
+---
+---
+
 # TensorFlow-Lite-Delphi
 
 The `tslite.dll` and model files are located in the debug folder for each project.
